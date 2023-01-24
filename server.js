@@ -5,7 +5,7 @@ require('dotenv').config() // make env variables available
 const express = require("express")
 const middleware = require('./utils/middleware')
 const ExampleRouter = require('./controllers/example')
-const UserRouter = require('./controllers/user')
+const UserRouter = require('./controllers/userControllers')
 const User = require("./models/user")
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
 // user and resource routes linked in ./utils/middleware.js
@@ -21,7 +21,13 @@ middleware(app)
 //    Routes      //
 ////////////////////
 
-app.use('/auth', UserRouter)
+//========= HOME ROUTE ===========
+app.get('/', (req,res)=> {
+	res.send(`Hello World`)
+})
+
+//////// Register Routes ///////////
+app.use('/users', UserRouter)
 app.use('/examples', ExampleRouter)
 
 app.get('/', (req, res) => {
