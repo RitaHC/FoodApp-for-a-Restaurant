@@ -1,5 +1,5 @@
 // import dependencies
-const mongoose = require('./connection')
+const mongoose = require('../utils/connection')
 
 // import user model for populate
 const User = require('./user')
@@ -17,10 +17,15 @@ const menuSchema = new Schema(
 			type: String, 
 			required: true 
 		},
+		img:{
+        data: Buffer,
+        contentType: String
+    	},
         price: {
 			 type: Number,
 			required: true },
-		ready: { type: Boolean, required: true },
+		bestseller: { type: Boolean, required: true },
+
 		owner: {
 			type: Schema.Types.ObjectID,
 			ref: 'User',
@@ -29,9 +34,9 @@ const menuSchema = new Schema(
 	{ timestamps: true }
 )
 
-// const Example = model('Example', exampleSchema)
+const Menu = model('Menu', menuSchema)
 
 /////////////////////////////////
 // Export our Model
 /////////////////////////////////
-// module.exports = Example
+module.exports = Menu
