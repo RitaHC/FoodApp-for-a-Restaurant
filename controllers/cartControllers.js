@@ -1,0 +1,22 @@
+////////////////////////////////////////////
+// Import Dependencies
+////////////////////////////////////////////
+const express = require('express')
+const User = require('../models/user')
+const bcrypt = require('bcryptjs')
+
+////////////////////////////////////////////
+// Create router
+////////////////////////////////////////////
+const router = express.Router()
+
+
+/////////////////// ROUTES //////////////////
+
+    // rendering cart page
+    router.get('/', (req,res)=> {
+    res.render('cart/display')
+})
+
+// Export
+module.exports = router

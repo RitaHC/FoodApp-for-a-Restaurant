@@ -1,5 +1,6 @@
 // import what I need
 const { Schema, model } = require('../utils/connection.js')
+const cartSchema = require('./cart')
 
 // create the schema
 const UserSchema = new Schema(
@@ -20,7 +21,8 @@ const UserSchema = new Schema(
 		date: {
 			type: Date,
 			default: Date.now
-		}
+		},
+		mycart: [cartSchema]
 	},
 	{ timestamps: true }
 )
