@@ -14,8 +14,9 @@ router.get('/', (req, res) => {
 			// res.json({ menu: menu })
 			// const username = req.session.username
 			// const loggedIn = req.session.loggedIn
+			// console.log(menu)
 			
-			res.render('menu/index')
+			res.render('menu/index', { menu, ...req.session })
 		})
 		.catch(error => {
 			// res.status(404).json(err)
@@ -23,23 +24,23 @@ router.get('/', (req, res) => {
 		})
 })
 
-// index that shows only the user's examples
-router.get('/mine', (req, res) => {
-    // destructure user info from req.session
-    const { username, userId, loggedIn } = req.session
-	Example.find({ owner: userId })
-		.then(examples => {
-			res.render('examples/index', { examples, username, loggedIn })
-		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
+// // index that shows only the user's examples
+// router.get('/mine', (req, res) => {
+//     // destructure user info from req.session
+//     const { username, userId, loggedIn } = req.session
+// 	Example.find({ owner: userId })
+// 		.then(examples => {
+// 			res.render('examples/index', { examples, username, loggedIn })
+// 		})
+// 		.catch(error => {
+// 			res.redirect(`/error?error=${error}`)
+// 		})
+// })
 
 
 
 // show route
-router.get('/:id', (req, res) => {
+router.get('/menu/:id', (req, res) => {
 	const id = req.params.id
 	Menu.findById(id)
 		.then(item => {

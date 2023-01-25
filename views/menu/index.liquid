@@ -1,12 +1,13 @@
 {% layout 'layout.liquid'%}
 {% block content %}
 <div>
-    <h2 class="display-6">All Examples</h2>
+    <h2 class="display-6">Food Menu</h2>
     <div class="row">
-        {% for example in examples %}
-        <div class="card" style="width: 18rem;">
-            <h5 class="card-header">{{ example.title }}</h5>
-            <div class="card-body">
+        {% for m in menu %}
+        <div style="width: 18rem;">
+            <img src={{ m.img }}>
+            <h5> {{m.name}} </h5>
+            {%- comment -%} <div class="card-body">
                 <h5 class="card-title">
                     Ready?: {{ example.ready }}
                 </h5>
@@ -19,7 +20,7 @@
                 <a href="/examples/{{ example.id }}" class="btn btn-info">
                     View {{ example.title }}
                 </a>
-            </div>
+            </div> {%- endcomment -%}
         </div>
         {% endfor %}
     </div>

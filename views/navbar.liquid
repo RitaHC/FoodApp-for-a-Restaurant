@@ -1,22 +1,24 @@
+
+
 {% block content %}
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
-        <a href="/" class="navbar-brand">Examplr</a>
-        {% if loggedIn %}
-        <a href="/examples/mine" class="nav-link text-light">Hello {{ username }} </a>
-        {% endif %}
+        <a href="/" class="navbar-brand">Home</a>
+        {%- comment -%} {% if loggedIn %}
+        <a href="/users/cart" class="nav-link text-light">Hello {{ username }} </a>
+        {% endif %} {%- endcomment -%}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             {% if loggedIn %}
-                <a href="/examples" class="nav-link text-light">View All</a>
-                <a href="/examples/new" class="nav-link text-light">New</a>
-                <a href="/examples/mine" class="nav-link text-light">My Examples</a>
-                <a href="/auth/logout" class="nav-link text-light">Log Out</a>
+                <a href="/users/cart" class="nav-link text-danger me-3">{{ username }} </a>
+                <a href="/menu" class="nav-link text-light me-3">Menu</a>
+                <a href="/users/logout" class="nav-link text-light me-3">LogOut</a>
             {% else %}
-                <a href="/auth/signup" class="nav-link text-light">Sign Up</a>
-                <a href="/auth/login" class="nav-link text-light">Sign In</a>
+                <a href="/menu" class="nav-link text-light me-3">Menu</a>
+                <a href="/users/signup" class="nav-link text-light me-3">SignUp</a>
+                <a href="/users/login" class="nav-link text-light me-3">SignIn</a>
             {% endif %}
         </div>
     </div>

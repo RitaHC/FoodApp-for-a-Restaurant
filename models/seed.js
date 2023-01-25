@@ -22,6 +22,13 @@ const seed = [
         img: 'https://yummyindiankitchen.com/wp-content/uploads/2016/11/aloo-samosa-recipe-punjabi.jpg',
         price: 8,
         bestseller: false
+    },
+    {
+        category: 'Main Course',
+        name: 'Desi Platter',
+        img: 'https://t4.ftcdn.net/jpg/02/75/39/35/240_F_275393546_xp429vWYFEyyMtQHP03YB8RHrNFraTvN.jpg',
+        price: 25,
+        bestseller: true
     }
 ]
 

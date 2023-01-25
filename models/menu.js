@@ -1,5 +1,6 @@
 // import dependencies
 const mongoose = require('../utils/connection')
+const commentSchema = require('./comment')
 
 // import user model for populate
 const User = require('./user')
@@ -18,8 +19,7 @@ const menuSchema = new Schema(
 			required: true 
 		},
 		img:{
-        data: Buffer,
-        contentType: String
+        type: String
     	},
         price: {
 			 type: Number,
