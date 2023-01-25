@@ -1,6 +1,7 @@
 // Import Dependencies
 const express = require('express')
 const Menu = require('../models/menu')
+const User = require('../models/user')
 
 // Create router
 const router = express.Router()
@@ -37,7 +38,18 @@ router.get('/', (req, res) => {
 // 		})
 // })
 
+// GET - Cart page
+router.get('/cart', (req,res)=> {
+    res.render(('menu/cart'), { ...req.session }) 
+})
 
+// POST - Item in cart 
+router.post('/cart', (req,res) => {
+	if(req.session.loggedIn) {
+		const theCart = req.body
+		console.log(req.body)
+	}
+})
 
 // show route
 router.get('/menu/:id', (req, res) => {

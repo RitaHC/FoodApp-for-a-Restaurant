@@ -7,7 +7,7 @@
         <div style="width: 18rem;">
             <img src={{ m.img }}>
             <h5> {{m.name}} </h5>
-            <button type="button" class="btn btn-danger" onclick="addToCart()">Add to Cart</button>
+            <a href = "/menu/cart"><button type="button" class="btn btn-danger" onclick="addToCart()">Add to Cart</button><a>
             {%- comment -%} <div class="card-body">
                 <h5 class="card-title">
                     Ready?: {{ example.ready }}
@@ -26,4 +26,5 @@
         {% endfor %}
     </div>
 </div>
+<script src="controllers/cartControllers.js"></script>
 {% endblock %}
