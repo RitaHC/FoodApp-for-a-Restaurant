@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 //////// Register Routes ///////////
 app.use('/users', UserRouter)
 app.use('/menu', MenuRouter)
-// app.use('/cart', CartRouter)
+app.use('/cart', CartRouter)
 
 app.get('/error', (req, res) => {
 	const error = req.query.error || 'This Page Does Not Exist'

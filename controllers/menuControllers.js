@@ -1,7 +1,7 @@
 // Import Dependencies
 const express = require('express')
 const Menu = require('../models/menu')
-const User = require('../models/user')
+
 
 // Create router
 const router = express.Router()
@@ -12,16 +12,16 @@ const router = express.Router()
 router.get('/', (req, res) => {
 	Menu.find({})
 		.then(menu => {
-			// res.json({ menu: menu })
+			res.json({ menu: menu })
 			// const username = req.session.username
 			// const loggedIn = req.session.loggedIn
 			// console.log(menu)
 			
-			res.render('menu/index', { menu, ...req.session })
+			// res.render('menu/index', { menu, ...req.session })
 		})
 		.catch(error => {
-			// res.status(404).json(err)
-			res.redirect(`/error?error=${error}`)
+			res.status(404).json(err)
+			// res.redirect(`/error?error=${error}`)
 		})
 })
 

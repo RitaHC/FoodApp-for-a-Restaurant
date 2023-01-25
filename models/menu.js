@@ -19,11 +19,12 @@ const menuSchema = new Schema(
 			required: true 
 		},
 		img:{
-        type: String
+        	type: String
     	},
         price: {
 			 type: Number,
-			required: true },
+			required: true 
+		},
 		bestseller: { type: Boolean, required: true },
 
 		owner: {

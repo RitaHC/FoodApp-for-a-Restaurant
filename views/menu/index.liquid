@@ -6,8 +6,9 @@
         {% for m in menu %}
         <div style="width: 18rem;">
             <img src={{ m.img }}>
-            <h5> {{m.name}} </h5>
-            <a href = "/menu/cart"><button type="button" class="btn btn-danger" onclick="addToCart()">Add to Cart</button><a>
+            <h5> {{m.name}} - ${{m.price}}</h5>
+            
+            <a href = "/cart"><button type="button" class="btn btn-danger" onclick="addToCart()">Add to Cart</button><a>
             {%- comment -%} <div class="card-body">
                 <h5 class="card-title">
                     Ready?: {{ example.ready }}

@@ -17,12 +17,7 @@ const UserSchema = new Schema(
 		email: {
 			type: String, 
 			required: true 
-		},
-		date: {
-			type: Date,
-			default: Date.now
-		},
-		mycart: [cartSchema]
+		}
 	},
 	{ timestamps: true }
 )
