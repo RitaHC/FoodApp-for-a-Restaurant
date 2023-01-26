@@ -89,8 +89,8 @@ router.post('/login', async (req, res) => {
 
                     // we'll send a 201 response and the user as json(for now)
                     // we'll update this after a couple tests to adhere to best practices
-                    res.status(201).json({ username: user.username })
-                    // res.redirect('/menu')
+                    // res.status(201).json({ username: user.username })
+                    res.redirect('/menu')
                 } else {
                     // if the passwords dont match, send the user a message
                     // res.json({ error: 'username or password is incorrect' })
