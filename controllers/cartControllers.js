@@ -1,6 +1,7 @@
 ////////////////////////////////////////////
 // Import Dependencies
 ////////////////////////////////////////////
+const { Router } = require('express')
 const express = require('express')
 const Cart = require('../models/cart')
 
@@ -14,7 +15,7 @@ const router = express.Router()
 
 
 
-//=================== CREATE ACTIVE CART ROUTE ==============
+//=================== FIND ACTIVE CART ROUTE ==============
 
 //Route to save an existing cart (without checking out).
     //This calls Cart.create(req.session.cart)
@@ -24,25 +25,53 @@ const router = express.Router()
 
 // GET - Active Cart page
 router.get('/', (req,res)=> {
-    res.render('cart')
+    console.log(`the cart`, req.session.cart)
+    res.render(('cart'), {...req.session})
 })
 
+// FIND - Active Cart page
 
+// Find a cart that is active- Just 1 active at a time
+// Push menu items into that  Cart.find({active: true}) .then(cart.items.push) return cart.save()
+// If this finds a cart that is active - add the menu item to the cart
+    // Otherwise If no active carts- create one 
+
+router.post('/:menuId', (req,res)=> {
+    const id = req.params.menuId
+    console.log(req.session)
+    Cart.find({active:true})
+        .then(cart=> {
+            console.log(cart)
+            if (cart.active == true){
+                cart.items.push(id)
+                return cart.save()
+            } else {
+                Cart.create(req.body)
+                    .then(cart=> {
+                        cart.owner = req.session.userId
+                        res.json({cart:cart})
+                    })
+                    .catch(err=> console.log(err))
+            }
+        })
+        .catch(err=> console.log(err))
+})
 
 // POST -> create, sessions in cart 
-router.post('/', (req,res) => {
-    console.log(req.session.cart)
-    Cart.create(req.session.cart)
-        .then(cart=> {
-            // res.status(201).json({cart:cart})
-            res.render(('cart'),{...req.session})
-        })
-        .catch(err => {
-            console.log(err)
-            // res.status(404).json(err)
-            res.redirect(`/error?error=${err}`)
-        })
-})
+
+// router.post('/', (req,res) => {
+//     Cart.create(req.session.cart)
+//         .then(cart=> {
+//             // res.status(201).json({cart:cart})
+//             console.log(cart)
+//             res.redirect('/cart')
+//         })
+//         .catch(err => {
+//             console.log(err)
+//             res.status(404).json(err)
+//             // res.redirect(`/error?error=${err}`)
+//         })
+// })
 
 //=================== PAST ORDERS CART ==============
 
@@ -55,76 +84,63 @@ router.post('/', (req,res) => {
     //SECOND STEP => create the cart by  => Cart.create(req.session.cart)
 
 router.get('/history', (req,res)=> {
-    res.render('orderHistory')
+    res.render(('orderHistory'),{...req.session})
 })
 
-router.put('/history', (req,res)=> {
-    let cartId = req.session.cart.id
-    Cart.findByIdAndUpdate(cartId)
-        .then(cart=> {
-            req.session.cart.active = false
-            console.log(cart)
-            // res.json({cart:cart})
-            res.render(('orderHistory'),{...req.session})
-        })
-        .catch(err=> {
-            console.log(err)
-            res.redirect(`/error?error=${err}`)
-        })
-})
+// PUT -> If user is logged in - Turn Active: false
+// router.put('/history', (req,res)=> {
+//     let cartId = req.session.cart.id
+//     Cart.findByIdAndUpdate(cartId)
+//         .then(cart=> {
+//             req.session.cart.active = false
+//             console.log(cart)
+//             res.json({cart:cart})
+//             // res.redirect('/history')
+//         })
+//         .catch(err=> {
+//             console.log(err)
+//             // res.redirect(`/error?error=${err}`)
+//         })
+// })
 
 // ==================== DELETE CART =======================
 
 router.delete('/checkout', (req,res)=> {
     Cart.deleteMany()
         .then(cart=> {
-            res.render(('deleteCart'),{...req.session})
+            res.json({cart:cart})
+            // res.redirect('/')
         })
         .catch(err=> {
             console.log(err)
-            res.redirect(`/error?error=${err}`)
+            // res.redirect(`/error?error=${err}`)
+            res.send(`Error`)
         })
 })
 
 //=================== ADDING ITEMS TO CART ==============
 
-// POST -> Push a menu id in Cart
-router.post('/:menuId', (req,res) => {
-    const menuId = req.params.menuId
-    // console.log(id)
-    // console.log(req.session.cart)
-    const cartId = req.session.cart.id
-    Cart.findById(cartId)
-        .then(cart=> {
-            cart.items.push(menuId)
-        })
-        .then(cart=> {
-            res.redirect(('/cart'),{...req.session})
-        })
-        .catch(err=> {
-            console.log(err)
-            res.redirect(`/error?error=${err}`)
-        })
+// SHOW -GET Route for the cart
 
-        
-// if(req.session.cart){
-//         Cart.items.push(menuId)
-//         console.log(Cart)
-        
-//         // res.redirect('/')
-//     } else {
-//         res.send(`Log In to Add to Cart`)
-//     }
-    
-    
+router.get('/:cartId', (req,res)=> {
+    const id= req.params.cartId
+    Cart.findById(id)
+        .then(cart=> {
+            res.json({cart:cart})
+        })
+        .catch(err=> console.log(err))
 })
 
-// router.get('/:menuId', (req,res)=> {
-//     res.render('orderHistory')
+// POST -> Push a menu id in Cart
+
+// router.post('/:menuId', (req,res) => {
+//     const id = req.params.menuId
+//     console.log(Cart)
+//     // Cart.items.push(id)
+//     req.session.cart.items.push(id)
+//     res.redirect('/cart')
+    
 // })
-
-
-
 
 //=================== CHECKOUT EXISTING CART ==============
 

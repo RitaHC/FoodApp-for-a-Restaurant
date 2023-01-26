@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 			// const username = req.session.username
 			// const loggedIn = req.session.loggedIn
 			// console.log(menu)
-			
+			// res.json({menu:menu})
 			res.render('menu/index', { menu, ...req.session })
 		})
 		.catch(error => {
@@ -44,12 +44,12 @@ router.get('/cart', (req,res)=> {
 })
 
 // POST - Item in cart 
-router.post('/cart', (req,res) => {
-	if(req.session.loggedIn) {
-		const theCart = req.body
-		console.log(req.body)
-	}
-})
+// router.post('/cart', (req,res) => {
+// 	if(req.session.loggedIn) {
+// 		const theCart = req.body
+// 		console.log(req.body)
+// 	}
+// })
 
 // show route
 router.get('/menu/:id', (req, res) => {
@@ -70,3 +70,9 @@ router.get('/menu/:id', (req, res) => {
 
 // Export the Router
 module.exports = router
+
+
+
+
+
+
