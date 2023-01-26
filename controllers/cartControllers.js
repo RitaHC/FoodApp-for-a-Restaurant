@@ -90,19 +90,38 @@ router.delete('/checkout', (req,res)=> {
 
 // POST -> Push a menu id in Cart
 router.post('/:menuId', (req,res) => {
-    const id = req.params.menuId
+    const menuId = req.params.menuId
     // console.log(id)
     // console.log(req.session.cart)
-    if(req.session.cart){
-        Cart.items.push(id)
-        console.log(Cart)
-    } else {
-        res.send(`Log In to Add to Cart`)
-    }
+    const cartId = req.session.cart.id
+    Cart.findById(cartId)
+        .then(cart=> {
+            cart.items.push(menuId)
+        })
+        .then(cart=> {
+            res.redirect(('/cart'),{...req.session})
+        })
+        .catch(err=> {
+            console.log(err)
+            res.redirect(`/error?error=${err}`)
+        })
+
+        
+// if(req.session.cart){
+//         Cart.items.push(menuId)
+//         console.log(Cart)
+        
+//         // res.redirect('/')
+//     } else {
+//         res.send(`Log In to Add to Cart`)
+//     }
     
-    res.render(('/cart'),{...req.session})
+    
 })
 
+// router.get('/:menuId', (req,res)=> {
+//     res.render('orderHistory')
+// })
 
 
 
