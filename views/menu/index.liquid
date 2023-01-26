@@ -7,7 +7,8 @@
         <div style="width: 18rem;">
             <img src={{ m.img }}>
             <h5> {{m.name}} - ${{m.price}}</h5>
-             <form action="/cart/{{ m.id }}" method="POST">
+
+             <form action="/cart/{{ m.id }}" method="GET">
                 <input type="submit" value="Add to Cart" class="btn btn-danger">
             </form>
             

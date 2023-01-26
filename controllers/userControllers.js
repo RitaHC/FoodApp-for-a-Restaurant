@@ -35,8 +35,8 @@ router.post('/signup', async (req, res) => {
 		// if created successfully redirect to login
 		.then((user) => {
 			console.log('new user created \n', user)
-            res.status(201).json({  user: user })
-			// res.redirect('/users/login')
+            // res.status(201).json({  user: user })
+			res.redirect('/users/login')
 		})
 		// if an error occurs, send err
 		.catch((err) => {
@@ -89,25 +89,25 @@ router.post('/login', async (req, res) => {
 
                     // we'll send a 201 response and the user as json(for now)
                     // we'll update this after a couple tests to adhere to best practices
-                    res.status(201).json({ username: user.username })
-                    // res.redirect('/menu')
+                    // res.status(201).json({ username: user.username })
+                    res.redirect('/menu')
                 } else {
                     // if the passwords dont match, send the user a message
-                    res.json({ error: 'username or password is incorrect' })
-                    // res.redirect(`/error?error=username%20or%20password%20is%20incorrect`)
+                    // res.json({ error: 'username or password is incorrect' })
+                    res.redirect(`/error?error=username%20or%20password%20is%20incorrect`)
                 }
 
             } else {
                 // if the user does not exist, we respond with a message saying so
-                res.json({ error: 'user does not exist' })
-                // res.redirect(`/error?error=user%20does%20not%20exist`)
+                // res.json({ error: 'user does not exist' })
+                res.redirect(`/error?error=user%20does%20not%20exist`)
             }
 
         })
         .catch(err => {
             console.log(err)
-            res.json(err)
-            // res.redirect(`/error?error=${err}`)
+            // res.json(err)
+            res.redirect(`/error?error=${err}`)
         })
 })
 

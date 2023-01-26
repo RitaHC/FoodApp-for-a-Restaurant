@@ -4,6 +4,8 @@
 const { Router } = require('express')
 const express = require('express')
 const Cart = require('../models/cart')
+const User = require('../models/user')
+const Menu = require('../models/menu')
 
 ////////////////////////////////////////////
 // Create router
@@ -13,75 +15,72 @@ const router = express.Router()
 
 /////////////////// ROUTES //////////////////
 
+// Get all Carts
 
-
-//=================== FIND ACTIVE CART ROUTE ==============
-
-//Route to save an existing cart (without checking out).
-    //This calls Cart.create(req.session.cart)
-    // After creating the cart -> update req.session.cart to be the one created in the database
-    // Doing this should give that cart an id
-    // res.redirect('/cartshowpage') 
-
-// GET - Active Cart page
-router.get('/', (req,res)=> {
-    console.log(`the cart`, req.session.cart)
-    res.render(('cart'), {...req.session})
-})
-
-// FIND - Active Cart page
-
-// Find a cart that is active- Just 1 active at a time
-// Push menu items into that  Cart.find({active: true}) .then(cart.items.push) return cart.save()
-// If this finds a cart that is active - add the menu item to the cart
-    // Otherwise If no active carts- create one 
-
-router.post('/:menuId', (req,res)=> {
-    const id = req.params.menuId
-    console.log(req.session)
-    Cart.find({active:true})
+router.get('/testIndex', (req,res)=> {
+    Cart.find({})
         .then(cart=> {
-            console.log(cart)
-            if (cart.active == true){
-                cart.items.push(id)
-                return cart.save()
-            } else {
-                Cart.create(req.body)
-                    .then(cart=> {
-                        cart.owner = req.session.userId
-                        res.json({cart:cart})
-                    })
-                    .catch(err=> console.log(err))
-            }
+            res.json({cart:cart})
         })
         .catch(err=> console.log(err))
 })
+//=================== FIND ACTIVE CART ROUTE ==============
 
-// POST -> create, sessions in cart 
 
-// router.post('/', (req,res) => {
-//     Cart.create(req.session.cart)
-//         .then(cart=> {
-//             // res.status(201).json({cart:cart})
-//             console.log(cart)
-//             res.redirect('/cart')
-//         })
-//         .catch(err => {
-//             console.log(err)
-//             res.status(404).json(err)
-//             // res.redirect(`/error?error=${err}`)
-//         })
+// GET - Active Cart page
+router.get('/', (req,res)=> {
+    res.render(('cart'), {...req.session})
+})
+
+//=================== CREATE CART ROUTE ==============
+
+// router.get('/:menuId', (req,res)=> {
+//     res.render('/cart')
 // })
 
+// Create a cart for every user, which is different
+router.get('/:menuId', (req, res) => {
+	const menuId = req.params.menuId
+
+	Cart.findOne({ active: true, owner: req.session.userId})
+		.then(cart => {
+            
+            console.log(`FIRST CONSOLE LOG`, cart)
+            console.log(`Add to cart - IF HITTT`)
+            cart.items.push(menuId)
+            return cart.save()
+			
+        })
+		.then(cart => {
+            // res.json({cart:cart})
+            console.log('cart is active', Cart)
+            console.log(cart)
+			res.redirect(`/cart`)
+		})
+		.catch(() => {
+            Cart.create({
+                owner: req.session.userId,
+            })
+            .then(cart => {
+                // res.json({cart:cart})
+                cart.items.push(menuId)
+                return cart.save()
+                
+            })
+            .then(cart => {
+                console.log(cart)
+                res.redirect(`/cart/${cart.id}`)
+            })
+            .catch(error => {
+                console.log(`Add to cart - INNER CATCH HITTT`)
+                // res.status(404).json(err)
+                res.redirect(`/error?error=${error}`)
+            })
+		})
+})
+
+
 //=================== PAST ORDERS CART ==============
-
-
-// Route to checkout an existing cart, 
-    //First, this route looks to see that re.sessio.cart has an id
-    // If it does have an id -> update the active boolean on the cart in the database to be False
-    //If it does not have an id -> that means the cart is not saved in the db, 
-    //  FIRST STEP => req.session.cart.active = false
-    //SECOND STEP => create the cart by  => Cart.create(req.session.cart)
 
 router.get('/history', (req,res)=> {
     res.render(('orderHistory'),{...req.session})
@@ -120,27 +119,17 @@ router.delete('/checkout', (req,res)=> {
 
 //=================== ADDING ITEMS TO CART ==============
 
-// SHOW -GET Route for the cart
+// SHOW 1 cart- GET Route for the cart
 
-router.get('/:cartId', (req,res)=> {
-    const id= req.params.cartId
-    Cart.findById(id)
-        .then(cart=> {
-            res.json({cart:cart})
-        })
-        .catch(err=> console.log(err))
-})
-
-// POST -> Push a menu id in Cart
-
-// router.post('/:menuId', (req,res) => {
-//     const id = req.params.menuId
-//     console.log(Cart)
-//     // Cart.items.push(id)
-//     req.session.cart.items.push(id)
-//     res.redirect('/cart')
-    
+// router.get('/:cartId', (req,res)=> {
+//     const id= req.params.cartId
+//     Cart.findById(id)
+//         .then(cart=> {
+//             res.json({cart:cart})
+//         })
+//         .catch(err=> console.log(err))
 // })
+
 
 //=================== CHECKOUT EXISTING CART ==============
 

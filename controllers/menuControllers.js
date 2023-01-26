@@ -20,8 +20,8 @@ router.get('/', (req, res) => {
 			res.render('menu/index', { menu, ...req.session })
 		})
 		.catch(error => {
-			res.status(404).json(err)
-			// res.redirect(`/error?error=${error}`)
+			// res.status(404).json(err)
+			res.redirect(`/error?error=${error}`)
 		})
 })
 
