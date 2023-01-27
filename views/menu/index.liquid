@@ -8,28 +8,10 @@
             <img src={{ m.img }}>
             <h5> {{m.name}} - ${{m.price}}</h5>
             <a href="/cart/{{m.id}}" class="btn btn-info">Add to Cart</a>
-
-             {%- comment -%} <form action="/cart/{{ m.id }}" method="GET">
-                <input type="submit" value="Add to Cart" class="btn btn-danger">
-            </form> {%- endcomment -%}
-            
-            {%- comment -%} <a href = "/cart/{{m.id}}"><button type="button" class="btn btn-danger">Add to Cart</button><a> {%- endcomment -%}
-            {%- comment -%} <div class="card-body">
-                <h5 class="card-title">
-                    Ready?: {{ example.ready }}
-                </h5>
-                <p class="card-text">
-                    Body: {{ example.body }}
-                </p>
-                <p class="card-text">
-                    Amount: {{ example.amount }}
-                </p>
-                <a href="/examples/{{ example.id }}" class="btn btn-info">
-                    View {{ example.title }}
-                </a>
-            </div> {%- endcomment -%}
         </div>
         {% endfor %}
+
+        
     </div>
 </div>
 <script src="controllers/cartControllers.js"></script>

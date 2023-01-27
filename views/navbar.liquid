@@ -10,9 +10,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             {% if loggedIn %}
-                <a href="/cart" class="nav-link text-danger me-3">{{ username }}-cart </a>
+                <a href="/cart" class="nav-link text-danger me-3">{{ username }} </a>
                 <a href="/menu" class="nav-link text-dark me-3">Menu</a>
                 <a href="/users/logout" class="nav-link text-dark me-3">LogOut</a>
+                <a href="cart/show/{{cart.id}}" class="nav-link text-dark me-3">MyCart</a>
             {% else %}
                 <a href="/menu" class="nav-link text-dark me-3">Menu</a>
                 <a href="/users/signup" class="nav-link text-dark me-3">SignUp</a>
