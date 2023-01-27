@@ -29,25 +29,43 @@ router.get('/testIndex', (req,res)=> {
 
 // GET - Active Cart page
 router.get('/', (req,res)=> {
-    res.render(('cart'), { ...req.session})
+    Cart.findOne({ active: true, owner: req.session.userId})
+        .then(cart=> {
+            console.log('GGGGGEEEEEETTTTTTTTTTTTTTTTTTTTTTT',cart)
+            res.render(('cart'), { cart, ...req.session})
+        })
+        .catch(err => {
+            res.redirect(`/error?error=${err}`)
+            console.log(err)
+        })
+    
 })
 
 //=================== MY PRESENT CART ==============
 
-router.get('/show/:cartId', (req, res) => {
+// router.get('/show', (req,res)=> {
+//     res.render('showCart.liquid', { cart, ...req.session })
+// })
+
+router.get('/:cartId/show', (req, res) => {
     // because we're editing a specific cart, we want to be able to access the cart's initial values. so we can use that info on the page.
     const cartId = req.params.cartId
+    console.log('this is the cartId', cartId)
     Cart.findById(cartId)
-        // .populate('cart.items', 'items.name')
+        .populate('items')
         .then(cart => {
+            console.log('THIS IS CART ID ------>', cartId)
+            console.log(`This id CART ---->`, cart)
             // res.send({cart:cart})
             res.render('showCart.liquid', { cart, ...req.session })
         })
         .catch(err => {
-            // res.redirect(`/error?error=${err}`)
+            res.redirect(`/error?error=${err}`)
             console.log(err)
         })
 })
+
+
 
 
 //=================== CREATE CART ROUTE ==============
@@ -76,7 +94,7 @@ router.get('/:menuId', (req, res) => {
             Cart.create({
                 owner: req.session.userId,
             })
-            // .populate('menu.img', 'menu.price', 'username')
+            // .populate('menu')
             .then(cart => {
                 // res.json({cart:cart})
                 cart.items.push(menuId)
