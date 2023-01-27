@@ -25,6 +25,13 @@ router.get('/testIndex', (req,res)=> {
         .catch(err=> console.log(err))
 })
 
+//=================== FIND ACTIVE CART ROUTE ====================================
+
+// GET - Active Cart page
+router.get('/', (req,res)=> {
+    res.render(('cart'), { ...req.session})
+})
+
 //=================== MY PRESENT CART ==============
 
 router.get('/show/:cartId', (req, res) => {
@@ -89,37 +96,35 @@ router.get('/:menuId', (req, res) => {
 })
 
 
-//=================== FIND ACTIVE CART ROUTE ==============
 
-// GET - Active Cart page
-router.get('/', (req,res)=> {
-    res.render(('cart'), { ...req.session})
+
+//==================================== CART CHECKOUT  ==============================
+
+/////////////////////// GET - Checkout //////////////////////////////////
+router.get('/checkout', (req,res)=> {
+    res.render(('orderHistory'),{...req.session})
+})
+
+/////////////////////// PUT - Checkout (Active-false) ///////////////////
+
+
+router.put('/checkout/:cartId', (req,res)=> {
+    const cartId = req.params.cartId
+    Cart.findByIdAndUpdate(cartId)
+        .then(cart=> {
+            cart.active = false
+            console.log(cart)
+            res.json({cart:cart})
+            // res.redirect('/history')
+        })
+        .catch(err=> {
+            console.log(err)
+            // res.redirect(`/error?error=${err}`)
+        })
 })
 
 
-//=================== CART CHECKOUT ==============
-
-// router.get('/checkout', (req,res)=> {
-//     res.render(('orderHistory'),{...req.session})
-// })
-
-// // PUT -> If user is logged in - Turn Active: false
-// router.put('/checkout', (req,res)=> {
-//     let cartId = req.session.cart.id
-//     Cart.findByIdAndUpdate(cartId)
-//         .then(cart=> {
-//             req.session.cart.active = false
-//             console.log(cart)
-//             res.json({cart:cart})
-//             // res.redirect('/history')
-//         })
-//         .catch(err=> {
-//             console.log(err)
-//             // res.redirect(`/error?error=${err}`)
-//         })
-// })
-
-// ==================== DELETE CART =======================
+/////////////////////// DELETE - Checkout //////////////////////////////////
 
 router.delete('/checkout', (req,res)=> {
     Cart.deleteMany()
@@ -134,18 +139,6 @@ router.delete('/checkout', (req,res)=> {
         })
 })
 
-//=================== ADDING ITEMS TO CART ==============
-
-// SHOW 1 cart- GET Route for the cart
-
-// router.get('/:cartId', (req,res)=> {
-//     const id= req.params.cartId
-//     Cart.findById(id)
-//         .then(cart=> {
-//             res.json({cart:cart})
-//         })
-//         .catch(err=> console.log(err))
-// })
 
 
 
