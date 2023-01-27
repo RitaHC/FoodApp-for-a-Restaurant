@@ -25,15 +25,16 @@ router.get('/testIndex', (req,res)=> {
         .catch(err=> console.log(err))
 })
 
-//=================== FIND ACTIVE CART ROUTE ====================================
+//=================== FIND My ACTIVE CART ROUTE ====================================
 
-// GET - Active Cart page
+// GET - My Active Cart page
 router.get('/', (req,res)=> {
     Cart.findOne({ active: true, owner: req.session.userId})
-        .then(cart=> {
+        .then(cart=> { 
             console.log('GGGGGEEEEEETTTTTTTTTTTTTTTTTTTTTTT',cart)
             res.render(('cart'), { cart, ...req.session})
-        })
+            }
+        )
         .catch(err => {
             res.redirect(`/error?error=${err}`)
             console.log(err)
@@ -41,13 +42,51 @@ router.get('/', (req,res)=> {
     
 })
 
+
+
+
+//==================================== CART CHECKOUT  ==============================
+
+
+
+/////////////////////// PUT - Checkout (Active-false) ///////////////////
+
+
+router.put('/checkout/:cartId', (req,res)=> {
+    const cartId = req.params.cartId
+    Cart.findByIdAndUpdate(cartId)
+        .then(cart=> {
+            cart.active = false
+            console.log('TTTTTTTUUUURRRNNNNNN FALSEEEEEEEE------', cart)
+            // res.json({cart:cart})
+            res.redirect('/cart/checkout')
+        })
+        .catch(err=> {
+            console.log(err)
+            res.redirect(`/error?error=${err}`)
+        })
+})
+
+/////////////////////// GET - Checkout //////////////////////////////////
+router.get('/checkout', (req,res)=> {
+    Cart.findOne({ active: true, owner: req.session.userId})
+        .then(cart=> { 
+            console.log('CHECKOUTTTTTTTTTTTTTTTTTT',cart)
+            res.render(('orderHistory'),{cart, ...req.session})
+            }
+        )
+        .catch(err => {
+            res.redirect(`/error?error=${err}`)
+            console.log(err)
+        })
+
+    
+})
+
 //=================== MY PRESENT CART ==============
 
-// router.get('/show', (req,res)=> {
-//     res.render('showCart.liquid', { cart, ...req.session })
-// })
 
-router.get('/:cartId/show', (req, res) => {
+router.get('/show/:cartId', (req, res) => {
     // because we're editing a specific cart, we want to be able to access the cart's initial values. so we can use that info on the page.
     const cartId = req.params.cartId
     console.log('this is the cartId', cartId)
@@ -64,9 +103,6 @@ router.get('/:cartId/show', (req, res) => {
             console.log(err)
         })
 })
-
-
-
 
 //=================== CREATE CART ROUTE ==============
 
@@ -115,31 +151,6 @@ router.get('/:menuId', (req, res) => {
 
 
 
-
-//==================================== CART CHECKOUT  ==============================
-
-/////////////////////// GET - Checkout //////////////////////////////////
-router.get('/checkout', (req,res)=> {
-    res.render(('orderHistory'),{...req.session})
-})
-
-/////////////////////// PUT - Checkout (Active-false) ///////////////////
-
-
-router.put('/checkout/:cartId', (req,res)=> {
-    const cartId = req.params.cartId
-    Cart.findByIdAndUpdate(cartId)
-        .then(cart=> {
-            cart.active = false
-            console.log(cart)
-            res.json({cart:cart})
-            // res.redirect('/history')
-        })
-        .catch(err=> {
-            console.log(err)
-            // res.redirect(`/error?error=${err}`)
-        })
-})
 
 
 /////////////////////// DELETE - Checkout //////////////////////////////////

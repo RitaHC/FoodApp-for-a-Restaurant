@@ -7,9 +7,8 @@
       <h2>
         Present Cart
       </h2>
-      {%- comment -%} <a href="/cart/show/{{cart.id}}" class="nav-link text-dark me-3">MyCart</a> {%- endcomment -%}
 
-      <form action="/cart/{{cart.id}}/show" method="GET">
+      <form action="/cart/show/{{cart.id}}" method="GET">
         <input type="submit" class="btn btn-danger" value="CART">
       </form>
 
