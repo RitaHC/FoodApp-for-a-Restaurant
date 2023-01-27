@@ -15,7 +15,7 @@ const router = express.Router()
 
 /////////////////// ROUTES //////////////////
 
-// Get all Carts
+//===================  CART INDEX ==============
 
 router.get('/testIndex', (req,res)=> {
     Cart.find({})
@@ -26,10 +26,9 @@ router.get('/testIndex', (req,res)=> {
 })
 //=================== FIND ACTIVE CART ROUTE ==============
 
-
 // GET - Active Cart page
 router.get('/', (req,res)=> {
-    res.render(('cart'), {...req.session})
+    res.render(('cart'), { ...req.session})
 })
 
 //=================== CREATE CART ROUTE ==============
@@ -43,8 +42,8 @@ router.get('/:menuId', (req, res) => {
 	const menuId = req.params.menuId
 
 	Cart.findOne({ active: true, owner: req.session.userId})
+        // .populate('menu.img', 'menu.price')
 		.then(cart => {
-            
             console.log(`FIRST CONSOLE LOG`, cart)
             console.log(`Add to cart - IF HITTT`)
             cart.items.push(menuId)
@@ -61,6 +60,7 @@ router.get('/:menuId', (req, res) => {
             Cart.create({
                 owner: req.session.userId,
             })
+            // .populate('menu.img', 'menu.price', 'username')
             .then(cart => {
                 // res.json({cart:cart})
                 cart.items.push(menuId)
@@ -69,7 +69,7 @@ router.get('/:menuId', (req, res) => {
             })
             .then(cart => {
                 console.log(cart)
-                res.redirect(`/cart/${cart.id}`)
+                res.redirect(`/cart`)
             })
             .catch(error => {
                 console.log(`Add to cart - INNER CATCH HITTT`)
@@ -79,15 +79,29 @@ router.get('/:menuId', (req, res) => {
 		})
 })
 
+//=================== MY PRESENT CART ==============
 
-//=================== PAST ORDERS CART ==============
+// router.get('/cart/:id', (req, res) => {
+//     // because we're editing a specific cart, we want to be able to access the cart's initial values. so we can use that info on the page.
+//     const cartId = req.params.id
+//     Cart.findById(cartId)
+//         .then(cart => {
+//             res.render('showCart', { Menu, ...req.session })
+//         })
+//         .catch(err => {
+//             res.redirect(`/error?error=${err}`)
+//         })
+// })
 
-router.get('/history', (req,res)=> {
-    res.render(('orderHistory'),{...req.session})
-})
 
-// PUT -> If user is logged in - Turn Active: false
-// router.put('/history', (req,res)=> {
+//=================== CART CHECKOUT ==============
+
+// router.get('/checkout', (req,res)=> {
+//     res.render(('orderHistory'),{...req.session})
+// })
+
+// // PUT -> If user is logged in - Turn Active: false
+// router.put('/checkout', (req,res)=> {
 //     let cartId = req.session.cart.id
 //     Cart.findByIdAndUpdate(cartId)
 //         .then(cart=> {
@@ -129,16 +143,6 @@ router.delete('/checkout', (req,res)=> {
 //         })
 //         .catch(err=> console.log(err))
 // })
-
-
-//=================== CHECKOUT EXISTING CART ==============
-
-
-// We need 2 GET Routes 
-    // One- get to the active cart
-    // Second- Show 'past-orders', which is all cart whose active boolean is false
-    // Third - To Delete the cart
-    // Forth - Update the cart 
 
 
 

@@ -1,6 +1,9 @@
 body{
     color: #5E9CA0;
 }
+.btn{
+    background-color:#69B0A5;
+}
 .home{
     /* background-image: url('https://as1.ftcdn.net/v2/jpg/03/10/83/10/1000_F_310831053_VWY0criywOIVVCdmyV3UMfQX17ukKlLg.jpg'); */
     background-repeat: no-repeat;

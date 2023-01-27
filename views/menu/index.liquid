@@ -7,10 +7,11 @@
         <div style="width: 18rem;">
             <img src={{ m.img }}>
             <h5> {{m.name}} - ${{m.price}}</h5>
+            <a href="/cart/{{m.id}}" class="btn btn-info">Add to Cart</a>
 
-             <form action="/cart/{{ m.id }}" method="GET">
+             {%- comment -%} <form action="/cart/{{ m.id }}" method="GET">
                 <input type="submit" value="Add to Cart" class="btn btn-danger">
-            </form>
+            </form> {%- endcomment -%}
             
             {%- comment -%} <a href = "/cart/{{m.id}}"><button type="button" class="btn btn-danger">Add to Cart</button><a> {%- endcomment -%}
             {%- comment -%} <div class="card-body">
