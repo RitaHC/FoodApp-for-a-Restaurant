@@ -23,13 +23,17 @@ const cartSchema = new Schema ({
     
 },{
     timestamps: true,
-    virtuals: true
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true }
 }
 )
 
 
 cartSchema.virtual('totalPrice').get( function () {
-    return this.items.price * this.items.length
+    let total = 0
+    this.items.forEach(item => {
+       total +=item.price})
+    return total 
 })
 const Cart = model('Cart', cartSchema)
 
