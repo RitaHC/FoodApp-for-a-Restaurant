@@ -57,6 +57,7 @@ router.put('/checkout/:cartId', (req,res)=> {
     Cart.findByIdAndUpdate(cartId)
         .then(cart=> {
             cart.active = false
+            cart.save()
             console.log('TTTTTTTUUUURRRNNNNNN FALSEEEEEEEE------', cart)
             // res.json({cart:cart})
             res.redirect('/cart/checkout')
@@ -69,9 +70,10 @@ router.put('/checkout/:cartId', (req,res)=> {
 
 /////////////////////// GET - Checkout //////////////////////////////////
 router.get('/checkout', (req,res)=> {
-    Cart.findOne({ active: true, owner: req.session.userId})
+    Cart.findOne({ active: false, owner: req.session.userId})
+        .populate('items')
         .then(cart=> { 
-            console.log('CHECKOUTTTTTTTTTTTTTTTTTT',cart)
+            console.log('CHECKOUTTTTTTTTTTTTTTTTTT - cart ITEMSSS',cart.items)
             res.render(('orderHistory'),{cart, ...req.session})
             }
         )
@@ -80,7 +82,6 @@ router.get('/checkout', (req,res)=> {
             console.log(err)
         })
 
-    
 })
 
 //=================== MY PRESENT CART ==============
@@ -144,7 +145,7 @@ router.get('/:menuId', (req, res) => {
             .catch(error => {
                 console.log(`Add to cart - INNER CATCH HITTT`)
                 // res.status(404).json(err)
-                res.redirect(`/error?error=${error}`)
+                // res.render(('emptyCart'),{cart, ...req.session})
             })
 		})
 })
@@ -155,18 +156,19 @@ router.get('/:menuId', (req, res) => {
 
 /////////////////////// DELETE - Checkout //////////////////////////////////
 
-router.delete('/checkout', (req,res)=> {
-    Cart.deleteMany()
-        .then(cart=> {
-            res.json({cart:cart})
-            // res.redirect('/')
-        })
-        .catch(err=> {
-            console.log(err)
-            // res.redirect(`/error?error=${err}`)
-            res.send(`Error`)
-        })
-})
+// router.delete('/checkout', (req,res)=> {
+//     Cart.deleteMany()
+//         .then(cart=> {
+//             console.log(`----------- DELETE ALL CARTS -----------`)
+//             res.json({cart:cart})
+//             // res.redirect('/')
+//         })
+//         .catch(err=> {
+//             console.log(err)
+//             // res.redirect(`/error?error=${err}`)
+//             res.send(`Error`)
+//         })
+// })
 
 
 

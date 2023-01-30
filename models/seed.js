@@ -13,21 +13,21 @@ const seed = [
         category: 'Appetizer',
         name: 'Raj Kachori',
         img: 'https://www.vegrecipesofindia.com/wp-content/uploads/2018/03/raj-kachori-chaat-recipe-1-500x500.jpg',
-        price: 15,
+        price: 20,
         bestseller: true
     },
     {
         category: 'Appetizer',
         name: 'Samosa',
         img: 'https://yummyindiankitchen.com/wp-content/uploads/2016/11/aloo-samosa-recipe-punjabi.jpg',
-        price: 8,
+        price: 20,
         bestseller: false
     },
     {
         category: 'Main Course',
         name: 'Desi Platter',
         img: 'https://t4.ftcdn.net/jpg/02/75/39/35/240_F_275393546_xp429vWYFEyyMtQHP03YB8RHrNFraTvN.jpg',
-        price: 25,
+        price: 20,
         bestseller: true
     }
 ]

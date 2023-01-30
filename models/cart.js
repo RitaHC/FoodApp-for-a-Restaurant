@@ -5,7 +5,7 @@ const mongoose = require('../utils/connection')
 // we'll destructure the Schema and model functions from mongoose
 const { Schema, model } = mongoose
 
-// comment schema
+// cart schema
 const cartSchema = new Schema ({
     items:[
         {type: Schema.Types.ObjectId,
@@ -21,9 +21,16 @@ const cartSchema = new Schema ({
         default: true
     }
     
-},{timestamps: true}
+},{
+    timestamps: true,
+    virtuals: true
+}
 )
 
+
+cartSchema.virtual('totalPrice').get( function () {
+    return this.items.price * this.items.length
+})
 const Cart = model('Cart', cartSchema)
 
 /////////////////////////////////

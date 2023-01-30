@@ -1,11 +1,17 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <h1>This is showCart view</h1>
+
+
 {% for item in cart.items %}
     <h2>{{item.name}}</h2>
     <img src="{{item.img}}">
-
+    <h2>{{item.price}}</h2>
 {% endfor %}
+
+The total price is -> {{cart.totalPrice}}
+
+
 
  <form action="/cart/checkout/{{cart.id}}?_method=PUT" method="POST">
         <input type="submit" class="btn btn-primary" value="Payment">

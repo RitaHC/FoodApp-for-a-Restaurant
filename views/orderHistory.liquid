@@ -1,4 +1,14 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 Cart History Page
+
+{% if cart.active == false %}
+    {% for item in cart.items %}
+        <h2>{{item.name}}</h2>
+        <img src="{{item.img}}">
+    {% endfor %}
+{% endif %}
+
+{{cart.active}}
+
 {% endblock %}
