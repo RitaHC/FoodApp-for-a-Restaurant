@@ -1,12 +1,12 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <h2>ORDER HISTORY</h2>
-
+<div class="d-flex flex-wrap justify-content-center">
 {% for cart in carts %}
+
     {% for item in cart.items %}
-        
-        <div  class="row aboutcard" style="width: 18rem;"> 
-            <div class="card aboutcard"" style="width: 18rem;">       
+        <div  class=" me-3" style="width: 18rem;"> 
+            <div class="card d-flex justify-content-center" style="width: 18rem;">       
                  <img class="card-img-top" src={{item.img}} alt="Card image cap"> 
                 <div class="card-body aboutcard">
                     <h5 class="card-title">{{item.name}}</h5>
@@ -19,7 +19,9 @@
         </div>
 
     {% endfor %}
+
 {%  endfor %}
+</div>
 
 
 
