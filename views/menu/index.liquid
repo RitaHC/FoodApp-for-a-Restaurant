@@ -43,7 +43,12 @@
                             <li class="list-group-item">${{m.price}}</li>
                         </ul>
                         <div class="card-body">
-                            <a href="/cart/{{m.id}}" class="btn btn-danger">Add to Card</a>
+                            <a href="/cart/{{m.id}}" class="btn btn-danger" onclick="Appetizer()">Add to Card</a>
+                            <script>
+                                function Appetizer() {
+                                alert(" Appetizer added to Cart!");
+                                }
+                             </script>
                         </div>
                     </div>  
                     
@@ -77,7 +82,12 @@
                             <li class="list-group-item">${{m.price}}</li>
                         </ul>
                         <div class="card-body">
-                            <a href="/cart/{{m.id}}" class="btn btn-danger">Add to Card</a>
+                            <a href="/cart/{{m.id}}" class="btn btn-danger" onclick="Main()">Add to Card</a>
+                            <script>
+                                function Main() {
+                                alert(" Main Course added to Cart!");
+                                }
+                             </script>
                         </div>
                     </div>  
                     
@@ -111,7 +121,12 @@
                             <li class="list-group-item">${{m.price}}</li>
                         </ul>
                         <div class="card-body">
-                            <a href="/cart/{{m.id}}" class="btn btn-danger">Add to Card</a>
+                            <a href="/cart/{{m.id}}" class="btn btn-danger"  onclick = 'Pizza()'>Add to Card</a>
+                             <script>
+                                function Pizza() {
+                                alert(" Pizza added to Cart!");
+                                }
+                             </script>
                         </div>
                     </div>  
                     
@@ -145,10 +160,10 @@
                             <li class="list-group-item">${{m.price}}</li>
                         </ul>
                         <div class="card-body">
-                            <a href="/cart/{{m.id}}" class="btn btn-danger" onclick="myFunction()">Add to Card</a>
+                            <a href="/cart/{{m.id}}" class="btn btn-danger" onclick="myFunctionD()">Add to Card</a>
                             <script>
-                                function myFunction() {
-                                alert("I am an alert box!");
+                                function myFunctionD() {
+                                alert(" Dessert added to Cart!");
                                 }
                             </script>
                         </div>

@@ -67,6 +67,11 @@ router.get('/menu/:id', (req, res) => {
 		})
 })
 
+// About Us Page Rendering
+
+router.get('/aboutus', (req,res)=> {
+	res.render(('aboutus'), { ...req.session})
+})
 
 // Export the Router
 module.exports = router

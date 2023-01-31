@@ -1,15 +1,26 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-Cart History Page
-<hr>
-{% if cart.active == false %}
-    {% for item in cart.items %}
-        <h2>{{item.name}}</h2>
-        <img src="{{item.img}}">
-    {% endfor %}
-{% endif %}
+<h2>ORDER HISTORY</h2>
 
-{%- comment -%} Cart active -> {{cart.active}} {%- endcomment -%}
-{%- comment -%} {{cart.items}} {%- endcomment -%}
+{% for cart in carts %}
+    {% for item in cart.items %}
+        
+        <div  class="row aboutcard" style="width: 18rem;"> 
+            <div class="card aboutcard"" style="width: 18rem;">       
+                 <img class="card-img-top" src={{item.img}} alt="Card image cap"> 
+                <div class="card-body aboutcard">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <p class="card-text">{{item.description}}</p> 
+                </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">${{item.price}}</li>
+                    </ul>    
+            </div>  
+        </div>
+
+    {% endfor %}
+{%  endfor %}
+
+
 
 {% endblock %}

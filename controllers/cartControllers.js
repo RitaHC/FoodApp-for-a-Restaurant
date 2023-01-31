@@ -49,35 +49,15 @@ router.get('/', (req,res)=> {
 
 
 
-/////////////////////// PUT - Checkout (Active-false) ///////////////////
 
-
-router.put('/checkout/:cartId', (req,res)=> {
-    const cartId = req.params.cartId
-    Cart.findByIdAndUpdate(cartId)
-        .populate('items')
-        .then(cart=> {
-            cart.active = false
-            cart.save()
-            console.log('TTTTTTTUUUURRRNNNNNN FALSEEEEEEEE------', cart)
-            // res.json({cart:cart})
-            // res.redirect('/cart/checkout')
-            res.render(('orderHistory'),{cart, ...req.session})
-        })
-        .catch(err=> {
-            console.log(err)
-            res.redirect(`/error?error=${err}`)
-        })
-})
 
 /////////////////////// GET - Checkout //////////////////////////////////
 router.get('/checkout', (req,res)=> {
-    Cart.findOne({ active: false, owner: req.session.userId})
-        // .populate('items')
-        .then(cart=> { 
-            console.log('CHECKOUTTTTTTTTTTTTTTTTTT - carTTTTTTTTT',cart)
-            console.log('CHECKOUTTTTTTTTTTTTTTTTTT - cart ITEMSSS',cart.items)
-            res.render(('orderHistory'),{cart, ...req.session})
+    Cart.find({ active: false, owner: req.session.userId})
+        .populate('items')
+        .then(carts=> { 
+            console.log('CHECKOUTTTTTTTTTTTTTTTTTT - cart ITEMSSS',carts.items)
+            res.render('orderHistory',{carts, ...req.session})
             }
         )
         .catch(err => {
@@ -87,6 +67,25 @@ router.get('/checkout', (req,res)=> {
 
 })
 
+/////////////////////// PUT - Checkout (Active-false) ///////////////////
+
+
+router.put('/checkout/:cartId', (req,res)=> {
+    const cartId = req.params.cartId
+    Cart.findByIdAndUpdate(cartId, {new: true})
+        .populate('items')
+        .then(cart=> {
+            cart.active = false
+            console.log('TTTTTTTUUUURRRNNNNNN FALSEEEEEEEE------', cart)
+            cart.save()
+            // res.json({cart:cart})
+            res.redirect('/cart/checkout')
+        })
+        .catch(err=> {
+            console.log(err)
+            res.redirect(`/error?error=${err}`)
+        })
+})
 //=================== MY PRESENT CART ==============
 
 

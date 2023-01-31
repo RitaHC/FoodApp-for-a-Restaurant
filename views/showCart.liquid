@@ -43,26 +43,7 @@
 
 
 
-{%- comment -%} {% for item in cart.items %}
-    <h2>{{item.name}}</h2>
-    <img src="{{item.img}}">
-    <h2>{{item.price}}</h2>
-{% endfor %} {%- endcomment -%}
 
-{%- comment -%} The total price is -> {{cart.totalPrice}} {%- endcomment -%}
-
-{%- comment -%} <table class="sticky-top table table-dark" id="'wrapper">
-  <thead>
-        <tr>
-            <th scope="col">Order Amount</th>
-            <th scope="row">${{cart.totalPrice}}</th>
-        </tr>
-    </thead>
-</table>
-
- <form action="/cart/checkout/{{cart.id}}?_method=PUT" method="POST">
-        <input type="submit" class="btn btn-primary" value="Payment">
-</form> {%- endcomment -%}
 
 
 {% endblock %}

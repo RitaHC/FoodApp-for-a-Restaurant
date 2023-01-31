@@ -1,9 +1,10 @@
 body{
-    color: black;
+    /* /* color: black;
     font-family:  'Times New Roman', Times, serif;
     position: relative;
-    height: 100%;
+    height: 100%; */
     box-sizing: border-box;
+    
 }
 .btn{
     background-color:#69B0A5;
@@ -16,26 +17,44 @@ body{
 
     /* background-color: pink; */
 }
+.aboutcard{
+    padding-left: 30px;
+}
 #nav{
-    background-color: #daa520;
+    /* background-color: #daa520; */
+    background-color: #474e5d;
     font-family: 'Racing Sans One', cursive;
     font-weight: bold;
+    color: white;
     font-size: 20px;
+}
+.cardgroup{
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 #homeHeading{
     height: 70vh;
+    
 
 }
-
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* display: inline-block; */
+    text-align: center;
+    padding-left: 10px;
+}
 .col-sm{
     margin-top: 20px;
 }
-#linkedin, #facebook, #instagram{
+#linkedin, #facebook, #instagram, #location{
     margin-top: 10px;
     height: 30px;
     width: 30px;
     margin-right: 15px;
+    margin-left: 20px;
 }
+
 #location{
     margin-top: 0;
     height: 70px;
@@ -58,7 +77,8 @@ h2{
     text-decoration: underline;
 }
 .menu{
-    color: #daa520;
+    /* color: #daa520; */
+    background-color: #474e5d;
     font-family: 'Rye', cursive;
     text-align: center;
 }
@@ -66,7 +86,9 @@ img{
     text-align: center;
 }
 .btn{
-    background-color: #daa520;
+    /* background-color: #daa520; */
+    /* background-color: #474e5d; */
+    background-color: black;
     text-align: center;
 }
 #best{
@@ -80,6 +102,7 @@ card{
     position: absolute;
     text-align: right;
     right: 0;
+    /* background-color: #474e5d; */
 }
 #cartimg{
     height: 25px;
@@ -87,10 +110,10 @@ card{
 }
 #home-title{
     position: absolute;
-    top: 30%;
+    top: 42%;
     left: 2%;
     font-family: 'Bungee Shade', cursive;
-    font-size: 100px;
+    font-size: 8vw;
     /* animation: animate 1.5s linear infinite; */
 }
 @keyframes animate{
@@ -111,4 +134,7 @@ card{
   }
   #payment{
     margin-left: 40%;
+  }
+  #logout, #aboutus{
+    text-align: center;
   }
