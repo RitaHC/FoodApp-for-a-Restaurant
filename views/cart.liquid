@@ -2,7 +2,58 @@
 {% block content %}
   
 
-  <div class="container-md">
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Particulars</th>
+      <th scope="col">Client Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Name</td>
+      <td>{{username}}</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Date</td>
+      <td>{{ 'now' | date: '%Y-%m-%d' }}</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>User Id</td>
+      <td>{{cart.owner}}</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Present Cart</td>
+      <td>
+        <form action="/cart/show/{{cart.id}}" method="GET">
+        <input type="submit" class="btn btn-danger" value="CART">
+      </form>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>Order History</td>
+      <td>
+        <a href="/cart/checkout"><button type="button" class="btn btn-primary">Order History</button></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+  {%- comment -%} <div class="container-md">
+    {{username}}
     <article>
       <h2>
         Present Cart
@@ -20,5 +71,5 @@
       
   
     </article>
-  </div>
+  </div> {%- endcomment -%}
 {% endblock %}

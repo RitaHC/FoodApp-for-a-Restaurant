@@ -25,6 +25,10 @@ const menuSchema = new Schema(
 			 type: Number,
 			required: true 
 		},
+		description: { 
+			type: String, 
+			required: true 
+		},
 		bestseller: { type: Boolean, required: true },
 
 		owner: {

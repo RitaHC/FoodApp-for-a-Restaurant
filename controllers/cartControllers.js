@@ -128,7 +128,7 @@ router.get('/:menuId', (req, res) => {
             // res.json({cart:cart})
             console.log('cart is active', Cart)
             console.log(cart)
-			res.redirect(`/cart`)
+			res.redirect(`/menu`)
 		})
 		.catch(() => {
             Cart.create({
@@ -143,7 +143,7 @@ router.get('/:menuId', (req, res) => {
             })
             .then(cart => {
                 console.log(cart)
-                res.redirect(`/cart`)
+                res.redirect(`/menu`)
             })
             .catch(error => {
                 console.log(`Add to cart - INNER CATCH HITTT`)

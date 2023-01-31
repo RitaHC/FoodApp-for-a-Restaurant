@@ -1,9 +1,21 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<h1>This is showCart view</h1>
-
 
 <h2>Cart</h2>
+
+<table class="sticky-top table table-dark" id="'wrapper">
+  <thead>
+        <tr>
+            <th scope="col">Order Amount</th>
+            <th scope="row">${{cart.totalPrice}}</th>
+        </tr>
+    </thead>
+</table>
+
+ <form action="/cart/checkout/{{cart.id}}?_method=PUT" method="POST">
+        <input id = 'payment' type="submit" class="btn btn-primary" value="Payment">
+</form>
+
     
     <div class="row" id="cart">
         {% for item in cart.items %}
@@ -16,7 +28,7 @@
                         
                         <div class="card-body">
                             <h5 class="card-title">{{item.name}}</h5>
-                            {%- comment -%} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {%- endcomment -%}
+                            <p class="card-text">{{item.description}}</p> 
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">${{item.price}}</li>
@@ -37,13 +49,20 @@
     <h2>{{item.price}}</h2>
 {% endfor %} {%- endcomment -%}
 
-The total price is -> {{cart.totalPrice}}
+{%- comment -%} The total price is -> {{cart.totalPrice}} {%- endcomment -%}
 
-
+{%- comment -%} <table class="sticky-top table table-dark" id="'wrapper">
+  <thead>
+        <tr>
+            <th scope="col">Order Amount</th>
+            <th scope="row">${{cart.totalPrice}}</th>
+        </tr>
+    </thead>
+</table>
 
  <form action="/cart/checkout/{{cart.id}}?_method=PUT" method="POST">
         <input type="submit" class="btn btn-primary" value="Payment">
-</form>
+</form> {%- endcomment -%}
 
 
 {% endblock %}

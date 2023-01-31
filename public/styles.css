@@ -1,9 +1,13 @@
 body{
     color: black;
     font-family:  'Times New Roman', Times, serif;
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
 }
 .btn{
     background-color:#69B0A5;
+    width: 200px;
 }
 .home{
     /* background-image: url('https://as1.ftcdn.net/v2/jpg/03/10/83/10/1000_F_310831053_VWY0criywOIVVCdmyV3UMfQX17ukKlLg.jpg'); */
@@ -63,6 +67,7 @@ img{
 }
 .btn{
     background-color: #daa520;
+    text-align: center;
 }
 #best{
     height: 20px;
@@ -71,7 +76,39 @@ img{
 card{
     text-align: center;
 }
-/* .card{
-    max-width: 16rem;
-    min-width: none;
-} */
+#nav-cart{
+    position: absolute;
+    text-align: right;
+    right: 0;
+}
+#cartimg{
+    height: 25px;
+    width: 25px;
+}
+#home-title{
+    position: absolute;
+    top: 30%;
+    left: 2%;
+    font-family: 'Bungee Shade', cursive;
+    font-size: 100px;
+    /* animation: animate 1.5s linear infinite; */
+}
+@keyframes animate{
+    0%{
+      opacity: 0;
+    }
+    30%{
+      opacity: 0.7;
+    }
+    100%{
+      opacity: 0;
+    }
+  }
+
+  #wrapper{
+    position: fixed;
+    overflow: hidden;
+  }
+  #payment{
+    margin-left: 40%;
+  }

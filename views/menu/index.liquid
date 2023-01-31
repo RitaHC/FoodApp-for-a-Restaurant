@@ -37,7 +37,7 @@
                         {% endif %} 
                         <div class="card-body">
                             <h5 class="card-title">{{m.name}}</h5>
-                            {%- comment -%} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {%- endcomment -%}
+                            <p class="card-text">{{m.description}}</p> 
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">${{m.price}}</li>
@@ -71,7 +71,7 @@
                         {% endif %} 
                         <div class="card-body">
                             <h5 class="card-title">{{m.name}}</h5>
-                            {%- comment -%} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {%- endcomment -%}
+                            <p class="card-text">{{m.description}}</p> 
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">${{m.price}}</li>
@@ -105,7 +105,7 @@
                         {% endif %} 
                         <div class="card-body">
                             <h5 class="card-title">{{m.name}}</h5>
-                            {%- comment -%} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {%- endcomment -%}
+                            <p class="card-text">{{m.description}}</p> 
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">${{m.price}}</li>
@@ -139,13 +139,18 @@
                         {% endif %} 
                         <div class="card-body">
                             <h5 class="card-title">{{m.name}}</h5>
-                            {%- comment -%} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {%- endcomment -%}
+                            <p class="card-text">{{m.description}}</p> 
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">${{m.price}}</li>
                         </ul>
                         <div class="card-body">
-                            <a href="/cart/{{m.id}}" class="btn btn-danger">Add to Card</a>
+                            <a href="/cart/{{m.id}}" class="btn btn-danger" onclick="myFunction()">Add to Card</a>
+                            <script>
+                                function myFunction() {
+                                alert("I am an alert box!");
+                                }
+                            </script>
                         </div>
                     </div>  
                     
