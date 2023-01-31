@@ -3,11 +3,39 @@
 <h1>This is showCart view</h1>
 
 
-{% for item in cart.items %}
+<h2>Cart</h2>
+    
+    <div class="row" id="cart">
+        {% for item in cart.items %}
+            
+                <div style="width: 18rem;">
+
+                    <div class="card" style="width: 18rem;">
+                        
+                        <img class="card-img-top" src={{item.img}} alt="Card image cap">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.name}}</h5>
+                            {%- comment -%} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {%- endcomment -%}
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">${{item.price}}</li>
+                       </ul>    
+                    </div>  
+                </div>
+        {% endfor %} 
+    </div>
+
+
+
+
+
+
+{%- comment -%} {% for item in cart.items %}
     <h2>{{item.name}}</h2>
     <img src="{{item.img}}">
     <h2>{{item.price}}</h2>
-{% endfor %}
+{% endfor %} {%- endcomment -%}
 
 The total price is -> {{cart.totalPrice}}
 

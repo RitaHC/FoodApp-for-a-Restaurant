@@ -1,7 +1,7 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 Cart History Page
-
+<hr>
 {% if cart.active == false %}
     {% for item in cart.items %}
         <h2>{{item.name}}</h2>
@@ -9,6 +9,7 @@ Cart History Page
     {% endfor %}
 {% endif %}
 
-{{cart.active}}
+{%- comment -%} Cart active -> {{cart.active}} {%- endcomment -%}
+{%- comment -%} {{cart.items}} {%- endcomment -%}
 
 {% endblock %}

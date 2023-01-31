@@ -55,12 +55,14 @@ router.get('/', (req,res)=> {
 router.put('/checkout/:cartId', (req,res)=> {
     const cartId = req.params.cartId
     Cart.findByIdAndUpdate(cartId)
+        .populate('items')
         .then(cart=> {
             cart.active = false
             cart.save()
             console.log('TTTTTTTUUUURRRNNNNNN FALSEEEEEEEE------', cart)
             // res.json({cart:cart})
-            res.redirect('/cart/checkout')
+            // res.redirect('/cart/checkout')
+            res.render(('orderHistory'),{cart, ...req.session})
         })
         .catch(err=> {
             console.log(err)
@@ -71,8 +73,9 @@ router.put('/checkout/:cartId', (req,res)=> {
 /////////////////////// GET - Checkout //////////////////////////////////
 router.get('/checkout', (req,res)=> {
     Cart.findOne({ active: false, owner: req.session.userId})
-        .populate('items')
+        // .populate('items')
         .then(cart=> { 
+            console.log('CHECKOUTTTTTTTTTTTTTTTTTT - carTTTTTTTTT',cart)
             console.log('CHECKOUTTTTTTTTTTTTTTTTTT - cart ITEMSSS',cart.items)
             res.render(('orderHistory'),{cart, ...req.session})
             }
@@ -113,7 +116,7 @@ router.get('/:menuId', (req, res) => {
 	const menuId = req.params.menuId
 
 	Cart.findOne({ active: true, owner: req.session.userId})
-        // .populate('menu.img', 'menu.price')
+        // .populate(items, owner)
 		.then(cart => {
             console.log(`FIRST CONSOLE LOG`, cart)
             console.log(`Add to cart - IF HITTT`)
@@ -156,7 +159,7 @@ router.get('/:menuId', (req, res) => {
 
 /////////////////////// DELETE - Checkout //////////////////////////////////
 
-// router.delete('/checkout', (req,res)=> {
+// router.get('/checkout', (req,res)=> {
 //     Cart.deleteMany()
 //         .then(cart=> {
 //             console.log(`----------- DELETE ALL CARTS -----------`)

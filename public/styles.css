@@ -1,5 +1,6 @@
 body{
-    color: #5E9CA0;
+    color: black;
+    font-family:  'Times New Roman', Times, serif;
 }
 .btn{
     background-color:#69B0A5;
@@ -12,7 +13,10 @@ body{
     /* background-color: pink; */
 }
 #nav{
-    background-color: #ACD3CD;
+    background-color: #daa520;
+    font-family: 'Racing Sans One', cursive;
+    font-weight: bold;
+    font-size: 20px;
 }
 #homeHeading{
     height: 70vh;
@@ -33,13 +37,41 @@ body{
     height: 70px;
     width: 70px;
 }
-img{
+/* img{
     height: 200px;
     width: 250px;
     text-align: center;
     border-radius: 10px;
-}
+} */
 #logo{
     height: 60px;
     width: 80px;
 }
+h2{
+    text-align: center;
+    margin: 30px;
+    font-family: 'Rye', cursive;
+    text-decoration: underline;
+}
+.menu{
+    color: #daa520;
+    font-family: 'Rye', cursive;
+    text-align: center;
+}
+img{
+    text-align: center;
+}
+.btn{
+    background-color: #daa520;
+}
+#best{
+    height: 20px;
+    width: 20px;
+}
+card{
+    text-align: center;
+}
+/* .card{
+    max-width: 16rem;
+    min-width: none;
+} */
