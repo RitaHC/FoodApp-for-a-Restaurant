@@ -6,8 +6,8 @@
 <table class="sticky-top table table-dark" id="'wrapper">
   <thead>
         <tr>
-            <th scope="col">Order Amount</th>
-            <th scope="row">${{cart.totalPrice}}</th>
+            <th scope="col" class="w-100 p-3">Order Amount</th>
+            <th scope="row" class="w-100 p-3">${{cart.totalPrice}}</th>
         </tr>
     </thead>
 </table>
@@ -16,11 +16,11 @@
         <input id = 'payment' type="submit" class="btn btn-primary" value="Payment">
 </form>
 
-    
-    <div class="row" id="cart">
+   
+    <div class="row d-flex flex-wrap justify-content-center me-3 p-3" id="cart">
         {% for item in cart.items %}
             
-                <div style="width: 18rem;">
+                <div style="width: 18rem;" class="me-3">
 
                     <div class="card me-3" style="width: 18rem;">
                         

@@ -47,7 +47,7 @@ body{
 .col-sm{
     margin-top: 20px;
 }
-#linkedin, #facebook, #instagram, #location{
+#linkedin, #facebook, #instagram, #location, #github{
     margin-top: 10px;
     height: 30px;
     width: 30px;
@@ -95,7 +95,7 @@ img{
     height: 20px;
     width: 20px;
 }
-card{
+card, p{
     text-align: center;
 }
 #nav-cart{
@@ -108,6 +108,12 @@ card{
     height: 25px;
     width: 25px;
 }
+.contactus{
+    text-decoration: none;
+    color: darkblue;
+    font-family:  'Times New Roman', Times, serif;
+    font-size: 20px;
+}
 #home-title{
     position: absolute;
     top: 42%;
@@ -116,6 +122,10 @@ card{
     font-size: 8vw;
     /* animation: animate 1.5s linear infinite; */
 }
+#loginAlert{
+    color: red;
+}
+
 @keyframes animate{
     0%{
       opacity: 0;

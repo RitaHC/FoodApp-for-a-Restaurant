@@ -42,7 +42,7 @@ const seed = [
         bestseller: false
     },
     {
-        category: 'Appetizer',
+        category: 'Main Course',
         name: 'Kathi Roll',
         img: 'https://b.zmtcdn.com/data/dish_images/c2f22c42f7ba90d81440a88449f4e5891634806087.png',
         price: 10,
@@ -78,7 +78,7 @@ const seed = [
         name: 'Choco Cake',
         img: 'https://b.zmtcdn.com/data/dish_images/d5ab931c8c239271de45e1c159af94311634805744.png',
         price: 30,
-        description: 'Vanilla cake base with chocolate, oreo and bonborn biscuit dressing',
+        description: 'Vanilla cake with chocolate and oreo biscuit dressing',
         bestseller: true
     },
     {
@@ -86,7 +86,7 @@ const seed = [
         name: 'Choco Pastry',
         img: 'https://b.zmtcdn.com/data/dish_images/83b1a4086e98dc584a7ce5d9a844a3191635166040.png',
         price: 30,
-        description: 'Belgian, dark and cream chocolate cake, served with choco-chips',
+        description: 'Belgian chocolate cake, served with choco-chips',
         bestseller: true
     },
     {
@@ -94,7 +94,7 @@ const seed = [
         name: 'Mango Shake',
         img: 'https://b.zmtcdn.com/data/dish_images/8187d3223ac2cc42cc24f723c92877511634805403.png',
         price: 30,
-        description: 'Mango and milk smoothie served with ice-cream and cherry',
+        description: 'Mango smoothie served with ice-cream and cherry on top',
         bestseller: false
     },
     {
