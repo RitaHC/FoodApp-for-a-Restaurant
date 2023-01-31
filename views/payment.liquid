@@ -1,0 +1,43 @@
+ {% layout 'layout.liquid'%}
+{% block content %}
+ 
+
+    <div class="column d-flex justify-content-center">
+    
+        <fieldset>
+            <legend class="row d-flex justify-content-center"><h2>Place Your Order!</h2>
+            </legend>
+
+            <img src="https://cdn-icons-png.flaticon.com/128/147/147258.png" alt=""> <br>
+
+            <label class="form-label "> 
+                <img class= 'pcards' src="https://cdn-icons-png.flaticon.com/128/217/217425.png" alt="">
+                <img class= 'pcards' src="https://cdn-icons-png.flaticon.com/128/8721/8721123.png" alt="">
+                <img class= 'pcards' src="https://cdn-icons-png.flaticon.com/128/179/179431.png" alt="">
+                <br>
+                <br>
+            </label>
+            <input type="text" name="username" placeholder="Name on the card" class="form-control" required>
+            <br>
+            
+            <input  type="text" name="email" placeholder="Card Number 0000-0000-0000" class="form-control" required>
+            <br>
+            <label class="form-label">Expiration Date </label>
+            <input class="w-25" type="text" name="username" placeholder="xxxx" class="form-control" required>
+
+            <label class="form-label">Security Code  </label>
+            <input class="w-25" type="text" name="email" placeholder="xxx" class="form-control" required>
+            <br>
+        
+        <br>
+        <a href="/"><button type="button" id='cpayment' class="btn btn-danger" onclick="Payment()">Confirm Payment</button></a>
+        <script>
+            function Payment() {
+                alert("Order Placed!!!");
+            }
+        </script>
+        </fieldset>
+    
+</div>
+
+{% endblock %}

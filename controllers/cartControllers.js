@@ -15,6 +15,10 @@ const router = express.Router()
 
 /////////////////// ROUTES //////////////////
 
+router.get('/payment', (req,res)=> {
+	res.render(('payment.liquid'), { ...req.session})
+})
+
 //===================  CART INDEX ==============
 
 router.get('/testIndex', (req,res)=> {
@@ -79,7 +83,8 @@ router.put('/checkout/:cartId', (req,res)=> {
             console.log('TTTTTTTUUUURRRNNNNNN FALSEEEEEEEE------', cart)
             cart.save()
             // res.json({cart:cart})
-            res.redirect('/cart/checkout')
+            // res.redirect('/cart/checkout')
+            res.redirect('/cart/payment')
         })
         .catch(err=> {
             console.log(err)

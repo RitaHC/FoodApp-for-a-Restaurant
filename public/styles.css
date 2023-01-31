@@ -142,9 +142,16 @@ card, p{
     position: fixed;
     overflow: hidden;
   }
-  #payment{
-    margin-left: 40%;
+  #payment, #cpayment{
+    margin-left: 35%;
   }
   #logout, #aboutus{
     text-align: center;
   }
+
+  .pcards{
+    height: 20px;
+    width: 20px;
+  }
+
+

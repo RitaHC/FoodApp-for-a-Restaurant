@@ -73,6 +73,8 @@ router.get('/aboutus', (req,res)=> {
 	res.render(('aboutus'), { ...req.session})
 })
 
+
+
 // Export the Router
 module.exports = router
 
