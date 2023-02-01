@@ -123,4 +123,7 @@ card, p{
     width: 20px;
   }
 
+  #readyToOrder{
+    color: green;
+  }
 
