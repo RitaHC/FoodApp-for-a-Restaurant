@@ -1,4 +1,4 @@
- {% layout 'layout.liquid'%}
+{% layout 'layout.liquid'%}
 {% block content %}
  
 
@@ -7,6 +7,7 @@
         <fieldset>
             <legend class="row d-flex justify-content-center"><h2>Place Your Order!</h2>
             </legend>
+
 
             <img src="https://cdn-icons-png.flaticon.com/128/147/147258.png" alt=""> <br>
 
@@ -29,15 +30,15 @@
             <input class="w-25" type="text" name="email" placeholder="xxx" class="form-control" required>
             <br>
         
-        <br>
-        <a href="/"><button type="button" id='cpayment' class="btn btn-danger" onclick="Payment()">Confirm Payment</button></a>
-        <script>
-            function Payment() {
+            <br>
+            <a href="/"><button type="button" id='cpayment' class="btn btn-danger" onclick="Payment()">Confirm Payment</button></a>
+            <script>
+                function Payment() {
                 alert("Order Placed!!!");
-            }
-        </script>
+                }
+            </script>
         </fieldset>
     
-</div>
+    </div>
 
 {% endblock %}

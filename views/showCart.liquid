@@ -17,25 +17,25 @@
     </form>
 
     
-        <div class="row d-flex flex-wrap justify-content-center me-3 p-3" id="cart">
-            {% for item in cart.items %}
+    <div class="row d-flex flex-wrap justify-content-center me-3 p-3" id="cart">
+        {% for item in cart.items %}
                 
-                <div style="width: 18rem;" class="me-3">
+            <div style="width: 18rem;" class="me-3">
 
-                    <div class="card me-3" style="width: 18rem;">
+                <div class="card me-3" style="width: 18rem;">
                             
-                        <img class="card-img-top" src={{item.img}} alt="Card image cap">
+                    <img class="card-img-top" src={{item.img}} alt="Card image cap">
                             
-                        <div class="card-body">
-                            <h5 class="card-title">{{item.name}}</h5>
-                            <p class="card-text">{{item.description}}</p> 
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">${{item.price}}</li>
-                        </ul>    
-                    </div>  
-                </div>
-            {% endfor %} 
-        </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.name}}</h5>
+                        <p class="card-text">{{item.description}}</p> 
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">${{item.price}}</li>
+                    </ul>    
+                </div>  
+            </div>
+        {% endfor %} 
+    </div>
 
 {% endblock %}

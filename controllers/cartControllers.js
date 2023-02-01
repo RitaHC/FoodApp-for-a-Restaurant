@@ -15,7 +15,7 @@ const router = express.Router()
 
 ////////////////////////////////////// ROUTES /////////////////////////////////////
 
-router.get('/payment', (req,res)=> {
+router.get('/payment', (req,res)=> { 
 	res.render(('payment.liquid'), { ...req.session})
 })
 
