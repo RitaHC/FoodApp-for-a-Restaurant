@@ -81,7 +81,7 @@ BONUS
 | /cart/checkout         | GET          | Cart History  
 | /cart/checkout/:cartId | PUT          | (Active true to false)
 | /show/:cartId          | GET          | Current Cart in use    
-| /cart/:menuId          | GET / CREATE | Push items - in existing or Create Cart  
+| /cart/:menuId          | GET / POST   | Push items - in existing or Create Cart  
 | /cart/:id      | DELETE       | destroy  
 
 #### Menu
