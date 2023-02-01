@@ -2,25 +2,25 @@
 {% block content %}
 <h2>ORDER HISTORY</h2>
 <div class="d-flex flex-wrap justify-content-center">
-{% for cart in carts %}
+    {% for cart in carts %}
 
-    {% for item in cart.items %}
-        <div  class=" me-3" style="width: 18rem;"> 
-            <div class="card d-flex justify-content-center" style="width: 18rem;">       
-                 <img class="card-img-top" src={{item.img}} alt="Card image cap"> 
-                <div class="card-body aboutcard">
-                    <h5 class="card-title">{{item.name}}</h5>
-                    <p class="card-text">{{item.description}}</p> 
-                </div>
+        {% for item in cart.items %}
+            <div  class=" me-3" style="width: 18rem;"> 
+                <div class="card d-flex justify-content-center" style="width: 18rem;">       
+                    <img class="card-img-top" src={{item.img}} alt="Card image cap"> 
+                    <div class="card-body aboutcard">
+                        <h5 class="card-title">{{item.name}}</h5>
+                        <p class="card-text">{{item.description}}</p> 
+                    </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">${{item.price}}</li>
                     </ul>    
-            </div>  
-        </div>
+                </div>  
+            </div>
 
-    {% endfor %}
+        {% endfor %}
 
-{%  endfor %}
+    {%  endfor %}
 </div>
 
 

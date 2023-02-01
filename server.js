@@ -8,8 +8,6 @@ const MenuRouter = require('./controllers/menuControllers')
 const UserRouter = require('./controllers/userControllers')
 const CartRouter = require('./controllers/cartControllers')
 const User = require("./models/user")
-// SEE MORE DEPENDENCIES IN ./utils/middleware.js
-// user and resource routes linked in ./utils/middleware.js
 
 //////////////////////////////
 // Middleware + App Object  //
@@ -24,15 +22,13 @@ middleware(app)
 
 //========= HOME ROUTE ===========
 
-
-///////// Home Page //////////// 
 app.get('/', (req, res) => {
     const { username, userId, loggedIn } = req.session
 	res.render('home.liquid', { loggedIn, username, userId })
 	// res.redirect('/menu')
 })
 
-//////// Register Routes ///////////
+//============== Register Routes ==============
 app.use('/users', UserRouter)
 app.use('/menu', MenuRouter)
 app.use('/cart', CartRouter)

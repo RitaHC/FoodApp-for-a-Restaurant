@@ -2,18 +2,13 @@
   <nav class="navbar navbar-expand-md navbar-dark" id="nav">
     <div class="container-fluid">
       <a href="/" class="navbar-brand text-light">Home</a>
-      {%- comment -%}
-        {% if loggedIn %}
-        <a href="/users/cart" class="nav-link text-light">Hello {{ username }} </a>
-        {% endif %}
-      {%- endcomment -%}
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         {% if loggedIn %}
-        {%- comment -%} <a href="/cart" class="nav-link text-danger me-3 -lg" id="nav-cart"><img src="https://png.pngtree.com/element_our/20190528/ourmid/pngtree-cartoon-restaurant-icon-design-image_1168957.jpg" alt=""></a> {%- endcomment -%}
-          <a href="/cart" class="nav-link text-danger me-3 -lg" id="nav-cart">{{ username }} <img id=cartimg src="https://cdn-icons-png.flaticon.com/128/8181/8181590.png" alt="">
+        
+          <a href="/cart" class="nav-link text-primary me-3 -lg" id="nav-cart">{{ username }} <img id=cartimg src="https://cdn-icons-png.flaticon.com/128/8181/8181590.png" alt="">
           </a>
           <a href="/menu" class="nav-link text-light me-3">Menu</a>
           <a href="/users/logout" class="nav-link text-light me-3">LogOut</a>

@@ -2,7 +2,7 @@
 const { Schema, model } = require('../utils/connection.js')
 const cartSchema = require('./cart')
 
-// create the schema
+//============================= USER SCHEMA ========================
 const UserSchema = new Schema(
 	{
 		username: { 

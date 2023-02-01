@@ -13,7 +13,7 @@ const router = express.Router()
 
 /////////////////// ROUTES //////////////////
 
-//============== SIGN UP =====================
+//======================= SIGN UP ==============================
 
 // GET -> SIGN-UP FORM (RENDER PAGE)
 router.get('/signup', (req, res) => {
@@ -46,7 +46,7 @@ router.post('/signup', async (req, res) => {
 		})
 })
 
-//============== LOGIN =====================
+//======================= LOGIN ==============================
 
 // GET -> to render the LOGIN form (RENDER PAGE)
 router.get('/login', (req, res) => {
@@ -63,11 +63,6 @@ router.post('/login', async (req, res) => {
         .then(async (user) => {
             // we check if that user exists
             if (user) {
-                // if they do, we compare the passwords using bcrypt
-                // bcrypt.compare -> evaluates to a truthy or a falsy value
-                // we'll save that result to a variable for easy reference later
-                // password -> comes from req.body
-                // user.password -> is saved in the database
                 const result = await bcrypt.compare(password, user.password)
 
                 if (result) {
@@ -77,19 +72,9 @@ router.post('/login', async (req, res) => {
                     req.session.loggedIn = true
                     req.session.userId = user.id
                     
-                    // req.session.cart = {
-                    //     items: [],
-                    //     owner: user.id,
-                    //     active: true
-                    // }
-                    
                     console.log(`This is req.session.cart`, req.session.cart)
-
                     console.log('this is req.session \n', req.session)
 
-                    // we'll send a 201 response and the user as json(for now)
-                    // we'll update this after a couple tests to adhere to best practices
-                    // res.status(201).json({ username: user.username })
                     res.redirect('/menu')
                 } else {
                     // if the passwords dont match, send the user a message
@@ -98,7 +83,6 @@ router.post('/login', async (req, res) => {
                 }
 
             } else {
-                // if the user does not exist, we respond with a message saying so
                 // res.json({ error: 'user does not exist' })
                 res.redirect(`/error?error=user%20does%20not%20exist`)
             }
@@ -111,7 +95,7 @@ router.post('/login', async (req, res) => {
         })
 })
 
-//============== LOGOUT =====================
+//======================= LOGOUT ==============================
 
 // GET -> /users/logout
 // This route renders a page that allows the user to log out
@@ -125,7 +109,6 @@ router.delete('/logout', (req, res) => {
     // destroy the session and send an appropriate response
     req.session.destroy(() => {
         console.log('this is req.session upon logout \n', req.session)
-        // eventually we will redirect users here, but thats after adding the view layer
         res.redirect('/')
     })
 })

@@ -1,49 +1,41 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 
-<h2>Cart</h2>
+    <h2>Cart</h2>
 
-<table class="sticky-top table table-dark" id="'wrapper">
-  <thead>
-        <tr>
-            <th scope="col" class="w-100 p-3">Order Amount</th>
-            <th scope="row" class="w-100 p-3">${{cart.totalPrice}}</th>
-        </tr>
-    </thead>
-</table>
+    <table class="sticky-top table table-dark" id="'wrapper">
+        <thead>
+            <tr>
+                <th scope="col" class="w-100 p-3">Order Amount</th>
+                <th scope="row" class="w-100 p-3">${{cart.totalPrice}}</th>
+            </tr>
+        </thead>
+    </table>
 
- <form action="/cart/checkout/{{cart.id}}?_method=PUT" method="POST">
+    <form action="/cart/checkout/{{cart.id}}?_method=PUT" method="POST">
         <input id = 'payment' type="submit" class="btn btn-primary" value="Payment">
-</form>
+    </form>
 
-   
-    <div class="row d-flex flex-wrap justify-content-center me-3 p-3" id="cart">
-        {% for item in cart.items %}
-            
+    
+        <div class="row d-flex flex-wrap justify-content-center me-3 p-3" id="cart">
+            {% for item in cart.items %}
+                
                 <div style="width: 18rem;" class="me-3">
 
                     <div class="card me-3" style="width: 18rem;">
-                        
+                            
                         <img class="card-img-top" src={{item.img}} alt="Card image cap">
-                        
+                            
                         <div class="card-body">
                             <h5 class="card-title">{{item.name}}</h5>
                             <p class="card-text">{{item.description}}</p> 
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">${{item.price}}</li>
-                       </ul>    
+                        </ul>    
                     </div>  
                 </div>
-        {% endfor %} 
-    </div>
-
-
-
-
-
-
-
-
+            {% endfor %} 
+        </div>
 
 {% endblock %}

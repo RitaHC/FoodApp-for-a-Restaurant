@@ -13,7 +13,7 @@ const Menu = require('../models/menu')
 const router = express.Router()
 
 
-/////////////////// ROUTES //////////////////
+////////////////////////////////////// ROUTES /////////////////////////////////////
 
 router.get('/payment', (req,res)=> {
 	res.render(('payment.liquid'), { ...req.session})
@@ -50,7 +50,6 @@ router.get('/', (req,res)=> {
 
 
 //==================================== CART CHECKOUT  ==============================
-
 
 
 

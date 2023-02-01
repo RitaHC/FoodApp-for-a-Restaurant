@@ -8,7 +8,9 @@ const router = express.Router()
 
 // Routes
 
-/////////////// INDEX ALL //////////////////
+////////////////////////////// ROUTES /////////////////////////////////
+
+//=================== INDEX ROUTE ==============
 router.get('/', (req, res) => {
 	Menu.find({})
 		.then(menu => {
@@ -25,6 +27,8 @@ router.get('/', (req, res) => {
 		})
 })
 
+//=================== ONE ITEM IN MENU ROUTE ==============
+
 // // index that shows only the user's examples
 // router.get('/mine', (req, res) => {
 //     // destructure user info from req.session
@@ -38,18 +42,8 @@ router.get('/', (req, res) => {
 // 		})
 // })
 
-// GET - Cart page
-router.get('/cart', (req,res)=> {
-    res.render(('menu/cart'), { ...req.session }) 
-})
 
-// POST - Item in cart 
-// router.post('/cart', (req,res) => {
-// 	if(req.session.loggedIn) {
-// 		const theCart = req.body
-// 		console.log(req.body)
-// 	}
-// })
+//=================== SHOW ROUTE ==============
 
 // show route
 router.get('/menu/:id', (req, res) => {
@@ -67,7 +61,7 @@ router.get('/menu/:id', (req, res) => {
 		})
 })
 
-// About Us Page Rendering
+//=================== ABOUT US RENDERING PAGE ==============
 
 router.get('/aboutus', (req,res)=> {
 	res.render(('aboutus'), { ...req.session})
