@@ -70,9 +70,27 @@ BONUS
 
 
 
-#### URL GUIDE
+# URL GUIDE
 
-#### Food
+#### Users
+
+| **URL**          | **HTTP Verb**|**Action**|
+|------------------|--------------|----------|
+| /users/signup    | GET         | new  
+| /users/signup    | POST         | create  
+| /users/login     | GET         | login       
+| /users/login     | POST         | create       
+| /users/logout    | DELETE       | destroy   
+
+#### Menu
+
+| **URL**            | **HTTP Verb**|**Action**|
+|--------------------|--------------|----------|
+| /menu              | GET          | index    |
+| /menu/aboutus      | GET          | show     |
+
+
+#### CART
 
 | **URL**                | **HTTP Verb**|**Action**                              |
 |------------------------|--------------|----------------------------------------|
@@ -84,23 +102,6 @@ BONUS
 | /cart/:menuId          | GET / POST   | Push items - in existing or Create Cart  
 | /cart/:id      | DELETE       | destroy  
 
-#### Menu
-
-| **URL**            | **HTTP Verb**|**Action**|
-|--------------------|--------------|----------|
-| /menu              | GET          | index    |
-| /menu/aboutus      | GET          | show     |
-
-
-#### Users
-
-| **URL**          | **HTTP Verb**|**Action**|
-|------------------|--------------|----------|
-| /users/signup    | GET         | new  
-| /users/signup    | POST         | create  
-| /users/login     | GET         | login       
-| /users/login     | POST         | create       
-| /users/logout    | DELETE       | destroy   
 
 
 # Models - ERD
