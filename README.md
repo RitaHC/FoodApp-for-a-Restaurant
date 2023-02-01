@@ -44,23 +44,27 @@ BONUS
 
 ![entityRelationshipDiagram](images/homeScreen.png)
 
-2. Menu Page
+2. About Us
+
+![entityRelationshipDiagram](images/aboutUs.png)
+
+3. Menu Page
 
 ![entityRelationshipDiagram](images/menuScreen.png)
 
-3. Client Dashboard Page
+4. Client Dashboard Page
 
 ![entityRelationshipDiagram](images/clientDashboard.png)
 
-4. Present Cart Page
+5. Present Cart Page
 
 ![entityRelationshipDiagram](images/cartScreen.png)
 
-2. Payment Page
+6. Payment Page
 
 ![entityRelationshipDiagram](images/paymentScreen.png)
 
-3. Order History Page
+7. Order History Page
 
 ![entityRelationshipDiagram](images/orderHistory.png)
 
