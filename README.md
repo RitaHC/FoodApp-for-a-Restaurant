@@ -105,7 +105,30 @@ BONUS
 
 # Models - ERD
 
-1. Menu 
+1. User
+
+```.js
+const UserSchema = new Schema(
+	{
+		username: { 
+			type: String, 
+			required: true, 
+			unique: true 
+		},
+		password: { 
+			type: String, 
+			required: true 
+		},
+		email: {
+			type: String, 
+			required: true 
+		}
+	},
+	{ timestamps: true }
+)
+
+```
+2. Menu 
 
 ```.js
 const menuSchema = new Schema(
@@ -134,30 +157,6 @@ const menuSchema = new Schema(
 		owner: {
 			type: Schema.Types.ObjectID,
 			ref: 'User',
-		}
-	},
-	{ timestamps: true }
-)
-
-```
-
-2. User
-
-```.js
-const UserSchema = new Schema(
-	{
-		username: { 
-			type: String, 
-			required: true, 
-			unique: true 
-		},
-		password: { 
-			type: String, 
-			required: true 
-		},
-		email: {
-			type: String, 
-			required: true 
 		}
 	},
 	{ timestamps: true }
