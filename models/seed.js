@@ -14,7 +14,7 @@ const seed = [
         name: 'Kukkad',
         img: 'https://b.zmtcdn.com/data/dish_images/197987b7ebcd1ee08f8c25ea4e77e20f1634731334.png',
         price: 10,
-        description: 'Roasted Chicken cooked in curd and spices',
+        description: 'Roasted Chicken, cooked in curd and spices',
         bestseller: true
     },
     {
@@ -22,7 +22,7 @@ const seed = [
         name: 'Idli Sambar',
         img: 'https://b.zmtcdn.com/data/dish_images/d9766dd91cd75416f4f65cf286ca84331634805483.png',
         price: 10,
-        description: 'Semomile pancakes with tarmarind curry',
+        description: 'Semomile pancakes with tamarind curry',
         bestseller: true
     },
     {
@@ -30,7 +30,7 @@ const seed = [
         name: 'Shwarma',
         img: 'https://b.zmtcdn.com/data/o2_assets/2f34540e0b12058f5f8b9390c3a3fb4a1648972281.png',
         price: 10,
-        description: 'Chicken wrap with vegetables and hut curry sauce',
+        description: 'Chicken and vegetable wrap served with hot curry sauce',
         bestseller: false
     },
     {
@@ -62,7 +62,7 @@ const seed = [
         name: 'Aloo Paratha',
         img: 'https://b.zmtcdn.com/data/o2_assets/2b5a5b533473aada22015966f668e30e1633434990.png',
         price: 30,
-        description: 'Bread stuffed with mashed potato and onions',
+        description: 'wheat bread stuffed with mashed potato and onions',
         bestseller: true
     },
     {
