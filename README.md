@@ -37,6 +37,7 @@ BONUS
 4. Node and it's packages
 5. Mongoose/MongoDB
 6. Express
+7. Liquid
 
 # Wireframes
 
