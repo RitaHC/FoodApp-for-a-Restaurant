@@ -1,4 +1,4 @@
-# Restaurant's Food Delivery Application
+# Restaurant's Food Ordering Application
 
 # User Story
 - This is a food application of a `Restraunt` named - `INDI EATS`
