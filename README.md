@@ -1,4 +1,7 @@
-# Restaurant's Food Delivery Application
+# Restaurant's Food Ordering Application
+
+### Deployed Link to the website
+https://projectfood.fly.dev/
 
 # User Story
 - This is a food application of a `Restraunt` named - `INDI EATS`
@@ -34,9 +37,10 @@ BONUS
 1. HTML5
 2. CSS
 3. Java Script
-4. Node and it's packages
+4. Node.js
 5. Mongoose/MongoDB
-6. Express
+6. Express.js
+7. Liquid
 
 # Wireframes
 
