@@ -1,5 +1,8 @@
 # Restaurant's Food Ordering Application
 
+### Deployed Link to the website
+https://projectfood.fly.dev/
+
 # User Story
 - This is a food application of a `Restraunt` named - `INDI EATS`
 - Users will have to sign-up and login to add items to cart and place order.
