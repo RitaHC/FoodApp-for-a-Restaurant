@@ -6,7 +6,8 @@ kill_timeout = 5
 processes = []
 
 [build]
-  image = "flyio/hellofly:latest"
+  builder = "heroku/buildpacks:20"
+
 
 [env]
 PORT = "8080"
